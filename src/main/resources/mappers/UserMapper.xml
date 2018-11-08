@@ -1,0 +1,23 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.js.campus.dao.UserMapper">
+  <resultMap id="BaseResultMap" type="com.js.campus.entity.User">
+    <id column="id" jdbcType="INTEGER" property="id" />
+    <result column="user_name" jdbcType="VARCHAR" property="userName" />
+    <result column="login_name" jdbcType="VARCHAR" property="loginName" />
+    <result column="password" jdbcType="VARCHAR" property="password" />
+    <result column="school_id" jdbcType="INTEGER" property="schoolId" />
+    <result column="building_id" jdbcType="INTEGER" property="buildingId" />
+    <result column="dormitory_id" jdbcType="INTEGER" property="dormitoryId" />
+    <result column="phone" jdbcType="VARCHAR" property="phone" />
+  </resultMap>
+  <sql id="Base_Column_List">
+    id, user_name, login_name, password, school_id, building_id, dormitory_id, phone
+  </sql>
+  <select id="selectByLoginName" parameterType="java.lang.String" resultMap="BaseResultMap">
+    SELECT
+    <include refid="Base_Column_List" />
+    from user
+    WHERE login_name = #{loginName,jdbcType=VARCHAR}
+  </select>
+</mapper>
