@@ -16,7 +16,7 @@ spring:
 
 logging:
   level:
-    com.gqk.mapper: DEBUG
+    com.js.campus.dao: DEBUG
 
 mybatis:
   mapper-locations: classpath*:mappers/*Mapper.xml

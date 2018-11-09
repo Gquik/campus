@@ -16,12 +16,12 @@ public class UserService {
     public Response<LoginCondition> login(LoginCondition loginCondition){
         Response response = new Response();
         User user = userMapper.selectByLoginName(loginCondition.getLoginName());
-        if (user==null){
-            response.setCode("1");
-            response.setMessage("用户名或密码错误！");
-        } else {
+        if (user!=null && user.getPassword().equals(loginCondition.getPassword())){
             response.setCode("0");
             response.setData(user);
+        } else {
+            response.setCode("1");
+            response.setMessage("用户名或密码错误！");
         }
         return response;
     }
